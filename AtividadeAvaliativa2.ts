@@ -130,12 +130,12 @@ class Arma extends Item {
     }
 
     aplicarBeneficios(personagem: Personagem): void {
-        personagem.aumentarAtaque(10);
-        personagem.aumentarDefesa(5);
+        // personagem.aumentarAtaque(10);
+        // personagem.aumentarDefesa(5);
     }
     removerBeneficios(personagem: Personagem): void {
-        personagem.diminuirAtaque(10);
-        personagem.diminuirDefesa(5);
+        // personagem.diminuirAtaque(10);
+        // personagem.diminuirDefesa(5);
     }
 }
 
@@ -158,8 +158,13 @@ class Pocao extends Item {
 //Letra E
 
 class Inventario {
-    itemInventario: ItemInventario[];
-    quatidadeMaximaItens: number;
+    itensInventario: ItemInventario[];
+    quantidadeMaximaItens: number;
+
+    constructor(itemInventario: ItemInventario[], quantidadeMaximaItens: number){
+        this.itensInventario = itemInventario;
+        this.quantidadeMaximaItens = quantidadeMaximaItens
+    }
 
     adicionarItem(): void{
 
@@ -232,5 +237,16 @@ class Personagem {
         this.mp = mp;
         this.inventario = inventario;
         this.arma = arma;
+    }
+
+    abrirInventario(){
+        let itemX = this.inventario.itensInventario;
+        for(let i = 0; i < itemX.length; i++){
+            console.log(`${i} - ${itemX[i][1][0]} (${itemX[i][0]})\nTotal: ${itemX.length}/${this.inventario[1]}`)
+        }
+    }
+
+    usarItem(item){
+        
     }
 }
